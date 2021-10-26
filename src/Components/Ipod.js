@@ -1,11 +1,12 @@
 import React from "react";
-import Wheel from './Wheel'
-
+import Wheel from './Wheel';
+import MainScreen from './MainScreen';
 class Ipod extends React.Component{
     
     render(){
         return(
             <div style={styles.mainConatiner}> 
+                <MainScreen/>
                <Wheel/>
             </div>
         );
@@ -14,12 +15,13 @@ class Ipod extends React.Component{
 }
 const styles={
     mainConatiner:{
-        height : '20rem',
-        width : '17rem',
+        height : '30rem',
+        width : '20rem',
         backgroundColor : 'black',
         margin : 'auto',
-        display : 'flex',
-        flexDirection : 'coloumn',
+        display:'flex',
+        flexDirection : 'row',
+        flexWrap : 'wrap',
         justifyContent : 'center'
     }
 }

@@ -1,5 +1,5 @@
 import './App.css';
-import Ipod from './Ipod';
+import Ipod from './Components/Ipod';
 
 function App() {
   return (  

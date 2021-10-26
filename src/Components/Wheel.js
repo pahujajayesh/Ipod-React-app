@@ -1,11 +1,17 @@
 import React from "react";
+import ZingTouch from'zingtouch';
 
 class Wheel extends React.Component {
+
+    rotateWheel=()=>{
+       
+    }
+    
   
-    render() {
+    render(){
         return (
-            <div style = {styles.wheelContainer} className='wheel-container'>
-            <div style = {styles.wheel}>
+            <div style = {styles.wheelContainer} id='wheel-container'>
+            <div style = {styles.wheel} id="inner-container" onMouseOver={this.rotateWheel}>
                 <div style = {styles.btnConatiner}>
                     <div style = {styles.menuButton}>
                         <span style={styles.text}>MENU</span>
@@ -14,14 +20,14 @@ class Wheel extends React.Component {
                 </div>
                 <div style = {styles.btnConatiner}>
                     <div style = {styles.middleButtons}>
-                        <img style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/56/56760.png" />
+                        <img alt="backward-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/56/56760.png" />
                         <div style={styles.selectBtn}></div> 
-                        <img style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/724/724927.png" />
+                        <img alt="fwd-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/724/724927.png" />
                     </div>
                 </div>
                 <div style = {styles.btnConatiner}>
                     <div style = {styles.playPause}>
-                        <img style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/64/64595.png" />
+                        <img alt="play-pause-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/64/64595.png" />
                     </div>
                 </div>
             </div>
@@ -32,16 +38,15 @@ class Wheel extends React.Component {
 
 const styles = {
 wheelContainer : {
-    height : '13rem',
-    width : 'inherit',
+    height : '15rem',
+    width : '100%',
     backgroundColor : 'lightgrey',
-    alignSelf : 'flex-end',
 },
 wheel:{
-    width : '15rem',
-    height : 'inherit',
+    width : '80%',
+    height : '90%',
     backgroundColor : 'white',
-    margin : 'auto',
+    margin : '1rem auto',
     borderRadius : '50%',
     display : 'flex',
     flexDirection : 'row',
