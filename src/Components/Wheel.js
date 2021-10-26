@@ -4,6 +4,8 @@ import ZingTouch from'zingtouch';
 class Wheel extends React.Component {
 
     rotateWheel=()=>{
+        let myElement = document.getElementById('inner-container');
+       
        
     }
     

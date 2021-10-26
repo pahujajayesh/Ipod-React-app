@@ -6,14 +6,17 @@ class HomeScreen extends React.Component{
             <div style={styles.homeScreen} id='home-screen'>
             <div style={styles.menuList} id='menu-list'>
                 <h2 style={{marginLeft:'12px'}}>IPod.js</h2>
-                <ul style={{listStyle:'none'}}>
-                    <li>Wallpapers</li>
-                    <li>Music</li>
-                    <li>Games</li>
-                    <li>Settings</li>
+                <ul class="list-group">
+                    <li class="list-group-item active" >Music</li>
+                    <li class="list-group-item">games</li>
+                    <li class="list-group-item">Settings</li>
+                    <li class="list-group-item">Coverflow</li>
+
                 </ul>
             </div>
-            <div style={styles.imageContainer} id='image-container'></div>
+            <div style={styles.imageContainer} id='image-container'>
+                <img style={{ height:'100%',width:'100%',objectFit:'cover'}}src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg"/>
+            </div>
         </div>
         )
     }
