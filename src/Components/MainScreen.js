@@ -5,7 +5,7 @@ class MainScreen extends React.Component{
     render(){
         return(
             <div style={styles.mainScreen}>
-                 <HomeScreen/>
+                 <HomeScreen activeItem={this.props.activeItem}/>
             </div>
         )
     }

@@ -1,21 +1,30 @@
 import React from "react";
-
+import { ListGroup } from 'react-bootstrap';
 class HomeScreen extends React.Component{
+    
     render(){
+        let self=this;
         return(
             <div style={styles.homeScreen} id='home-screen'>
             <div style={styles.menuList} id='menu-list'>
                 <h2 style={{marginLeft:'12px'}}>IPod.js</h2>
-                <ul class="list-group">
-                    <li class="list-group-item active" >Music</li>
-                    <li class="list-group-item">games</li>
-                    <li class="list-group-item">Settings</li>
-                    <li class="list-group-item">Coverflow</li>
-
-                </ul>
+                <ListGroup>
+                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Music'?'active':''}>
+                            Music {this.props.activeItem==='Music'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
+                        </ListGroup.Item>
+                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Games'?'active':''}>
+                            Games {this.props.activeItem==='Games'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
+                        </ListGroup.Item>
+                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Settings'?'active':''}>
+                            Settings {this.props.activeItem==='Settings'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
+                        </ListGroup.Item>
+                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Coverflow'?'active':''}>
+                            Coverflow {this.props.activeItem==='Coverflow'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
+                        </ListGroup.Item>
+                    </ListGroup>
             </div>
             <div style={styles.imageContainer} id='image-container'>
-                <img style={{ height:'100%',width:'100%',objectFit:'cover'}}src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg"/>
+                <img alt="background-img" style={{ height:'100%',width:'100%',objectFit:'cover'}}src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg"/>
             </div>
         </div>
         )
