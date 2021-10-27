@@ -1,17 +1,13 @@
 import React from 'react';
-import { ListGroup } from 'react-bootstrap';
+
 
 class Settings extends React.Component{
 
-    constructor(){
-        super();
-    }
 
     render(){
-        let self = this;
         return(
             <div style={styles.settings} >
-            <img alt="settings-icon" style={styles.image} src="https://cdn-icons-png.flaticon.com/512/3524/3524659.png" />
+            <img alt="settings-icon" style={styles.image} src="https://p.kindpng.com/picc/s/543-5439191_configuration-control-gear-preferences-repair-setting-gear-and.png" />
         </div>
         );
     }

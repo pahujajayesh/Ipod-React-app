@@ -5,6 +5,7 @@ import Games from "./Games";
 import Music from './Music';
 import Coverflow from "./Coverflow";
 import MyMusic from './MyMusic';
+import Artists from "./Artists";
 
 class MainScreen extends React.Component{
     render(){
@@ -16,6 +17,8 @@ class MainScreen extends React.Component{
                 {this.props.activePage==='Coverflow'?<Coverflow/> : null}
                 {this.props.activePage==='Settings'?<Settings /> : null}
                 {this.props.activePage==='MyMusic'?<MyMusic /> : null}
+                {this.props.activePage==='Artists'?<Artists /> : null}
+
             </div>
         )
     }

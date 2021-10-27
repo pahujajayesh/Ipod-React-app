@@ -2,9 +2,7 @@ import React from 'react';
 
 class Coverflow extends React.Component{
 
-    constructor(){
-        super();
-    }
+   
 
     render(){
         return(

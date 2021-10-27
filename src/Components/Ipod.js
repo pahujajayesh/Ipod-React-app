@@ -8,7 +8,7 @@ class Ipod extends React.Component{
         this.state = {
             activeItem : 'Music',
             activePage:'HomeScreen',
-            
+            enter : 0
         }
     }
     
@@ -18,12 +18,13 @@ class Ipod extends React.Component{
         var childElement = document.getElementById('inner-container');
         var change = 0;
         var self = this;
+        self.state.enter = self.state.enter + 1;
 
-        activeRegion.bind(childElement, 'rotate', function(event){
-
-        var newAngle = event.detail.distanceFromLast;
-        console.log(newAngle);
-
+        if(self.state.enter < 2){
+            activeRegion.bind(childElement, 'rotate', function(event){
+                //perform Operations
+                var newAngle = event.detail.distanceFromLast;
+                console.log(newAngle);
         if(newAngle < 0){
             console.log(change);
             change++;
@@ -99,7 +100,10 @@ class Ipod extends React.Component{
         }
     }
 });
+    }else{
+        console.log('Not allowed to enter')
     }
+}
 
         
 
@@ -119,7 +123,7 @@ class Ipod extends React.Component{
     }
 
     changePageToHomeScreen = () => {
-        if(this.state.activePage === 'Music'){
+        if(this.state.activePage === 'Music' || this.state.activeItem==='Artists' || this.state.activeItem==='MyMusic'){
             this.setState({
                 activeItem : 'Music',
                 activePage : 'HomeScreen'
@@ -169,7 +173,7 @@ class Ipod extends React.Component{
 const styles={
     mainConatiner:{
         position:'relative',
-        height : '30rem',
+        height : 'auto',
         width : '20rem',
         backgroundColor : 'black',
         margin : 'auto',

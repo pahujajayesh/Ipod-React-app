@@ -6,7 +6,8 @@ class MyMusic extends React.Component{
     constructor(){
         super();
         this.state = {
-            audio : null
+            audio : null,
+            isMounted:true
         }
     }
 
@@ -17,10 +18,17 @@ class MyMusic extends React.Component{
         self.audio = audioEl;
         self.audio.play();
         self.audio.addEventListener("timeupdate",function(){
-            var pos = audioEl.currentTime/audioEl.duration;
-            self.updateTime();
-            document.getElementById("fill").style.width = pos*100 + "%";
+            if(self.state.isMounted){
+                var pos = audioEl.currentTime/audioEl.duration;
+                self.updateTime();
+                let fill = document.getElementById("fill");
+                console.log(fill);
+                if(fill !== null){
+                    fill.style.width = pos*100 + "%";
+                }
+            }
         })
+
     }
     updateTime = () =>{
         this.setState({
@@ -35,7 +43,7 @@ class MyMusic extends React.Component{
             <div style={styles.myMusicContainer}>
 
                 <div style={styles.info}>
-                    <img style={styles.image} src="https://cover.djpunjab.org/50413/300x700/295-Sidhu-Moose-Wala.jpg"></img>
+                    <img alt="song-img"style={styles.image} src="https://cover.djpunjab.org/50413/300x700/295-Sidhu-Moose-Wala.jpg"></img>
                 <div style={styles.subInfo}>
                     <h4 style={{marginBottom:'0.5rem'}}>295</h4>
                         <p style={{marginBottom:'0'}}>Moosetape</p>
@@ -48,11 +56,11 @@ class MyMusic extends React.Component{
                     <audio className="audio-element">
                         <source src={sound}></source>
                     </audio>
-                    <p style={styles.currTime}>{audio != null ? Math.floor(audio.currentTime) : 0 / 0}</p>
+                    <p style={styles.currTime}>{audio !== null ? Math.floor(audio.currentTime) : '0 / 0'}</p>
                     <div style={styles.seekBar}>
                         <div style={styles.fill} id='fill'></div>
                     </div>
-                    <p style={styles.dur}>{audio != null ? Math.floor(audio.duration) : null}</p>
+                    <p style={styles.dur}>{audio != null ? Math.floor(audio.duration) : '0 / 0'}</p>
                 </div>
 
             </div>

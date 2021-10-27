@@ -4,7 +4,7 @@ class Games extends React.Component{
     render(){
         return(
             <div style={styles.settings} >
-                <img style={styles.image} src="https://acegif.com/wp-content/uploads/2020/11/am0ngsusxh-m.gif" />
+                <img alt="Games-gif" style={styles.image} src="https://acegif.com/wp-content/uploads/2020/11/am0ngsusxh-m.gif" />
             </div>
         );
     }

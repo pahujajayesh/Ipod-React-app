@@ -3,10 +3,6 @@ import { ListGroup } from 'react-bootstrap';
 
 class Music extends React.Component{
 
-    constructor(){
-        super();
-    }
-
     render(){
         return(
             <div style={styles.musicScreen} id='music-screen'>
@@ -22,7 +18,7 @@ class Music extends React.Component{
                     </ListGroup>
                 </div>
                 <div style={styles.imageContainer} id='image-container'>
-                    <img style={{height:'100%' , width:'100%'}} src="https://images.pexels.com/photos/1005417/pexels-photo-1005417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                    <img alt="background-img" style={{height:'100%' , width:'100%'}} src="https://images.pexels.com/photos/1005417/pexels-photo-1005417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
                 </div>
             </div>
         );
