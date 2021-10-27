@@ -5,17 +5,15 @@ class Ipod extends React.Component{
     constructor(){
         super();
         this.state = {
-            activeItem : 'Music'
+            activeItem : 'Music',
+            activePage:'HomeScreen',
         }
-    }
-    componentDidUpdate(){
-        console.log("Updated");
     }
     
     rotateWheel = () => {
         var currentAngle = 15;
         var containerElement = document.getElementById('wheel-container');
-        var activeRegion = ZingTouch.Region(containerElement);
+        var activeRegion = new ZingTouch.Region(containerElement);
         var childElement = document.getElementById('inner-container');
         var change = 0;
         var self = this;
@@ -23,7 +21,7 @@ class Ipod extends React.Component{
         activeRegion.bind(childElement, 'rotate', function(event){
 
         var newAngle = event.detail.distanceFromLast;
-        console.log(currentAngle , newAngle);
+        console.log(newAngle);
 
         if(newAngle < 0){
             console.log(change);
@@ -77,23 +75,37 @@ class Ipod extends React.Component{
         });
     }
 
+    changePage = () => {
+
+        this.setState({
+            activeItem : this.state.activeItem,
+            activePage : this.state.activeItem
+        })
+    }
+
+    changePageToHomeScreen = () => {
+        this.setState({
+            activeItem : this.state.activeItem,
+            activePage : 'HomeScreen'
+        });
+    }
     render(){
         return(
             
             <div style={styles.mainConatiner}> 
-               <MainScreen activeItem={this.state.activeItem}/>
+               <MainScreen activeItem={this.state.activeItem}  activePage={this.state.activePage}/>
                <div style = {styles.wheelContainer} id='wheel-container'>
                 <div style = {styles.wheel} id="inner-container" onMouseOver={this.rotateWheel}>
                 <div style = {styles.btnConatiner}>
                     <div style = {styles.menuButton}>
-                        <span style={styles.text}>MENU</span>
+                       <img alt="Menu-btn" onClick={this.changePageToHomeScreen} style={styles.icon} src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png"/>
                     </div>
 
                 </div>
                 <div style = {styles.btnConatiner}>
                     <div style = {styles.middleButtons}>
                         <img alt="backward-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/56/56760.png" />
-                        <div style={styles.selectBtn}></div> 
+                        <div  onClick={this.changePage}  style={styles.selectBtn}></div> 
                         <img alt="fwd-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/724/724927.png" />
                     </div>
                 </div>
