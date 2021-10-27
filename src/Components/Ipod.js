@@ -1,17 +1,18 @@
 import React from "react";
 import MainScreen from './MainScreen';
 import ZingTouch from 'zingtouch';
+
 class Ipod extends React.Component{
     constructor(){
         super();
         this.state = {
             activeItem : 'Music',
             activePage:'HomeScreen',
+            
         }
     }
     
     rotateWheel = () => {
-        var currentAngle = 15;
         var containerElement = document.getElementById('wheel-container');
         var activeRegion = new ZingTouch.Region(containerElement);
         var childElement = document.getElementById('inner-container');
@@ -29,66 +30,108 @@ class Ipod extends React.Component{
          if(change === 15){
                 console.log("change state");
                 change = 0;
-                if(self.state.activeItem === 'Music'){
-                    self.setState({
-                        activeItem : "Games"
-                    })
-                }else if(self.state.activeItem === 'Games'){
-                    self.setState({
-                        activeItem : "Settings"
-                    })
-                }else if(self.state.activeItem === 'Settings'){
-                    self.setState({
-                        activeItem : "Coverflow"
-                    })
-                }else if(self.state.activeItem === 'Coverflow'){
-                    self.setState({
-                        activeItem : "Music"
+                if(self.state.activePage === 'HomeScreen'){
+                    if(self.state.activeItem === 'Music'){
+                        self.setState({
+                            activeItem : "Games"
+                        })
+                    }else if(self.state.activeItem === 'Games'){
+                        self.setState({
+                            activeItem : "Settings"
+                        })
+                    }else if(self.state.activeItem === 'Settings'){
+                        self.setState({
+                            activeItem : "Coverflow"
+                        })
+                    }else if(self.state.activeItem === 'Coverflow'){
+                        self.setState({
+                            activeItem : "Music"
+                        })
+                    }
+                }else if(self.state.activePage === 'Music'){
+                    if(self.state.activeItem === 'MyMusic'){
+                        self.setState({
+                            activeItem : "Artists"
+                        })
+                    }
+                    }else if(self.state.activeItem === 'Artists'){
+                        self.setState({
+                            activeItem : "MyMusic"
                     })
                 }
             }
-        }else{
+        }
+            else{
             console.log(change);
             change++;
             if(change === 15){
                 console.log("change state");
                 change = 0;
-                if(self.state.activeItem === 'Music'){
-                    self.setState({
-                        activeItem : "Coverflow"
+                if(self.state.activePage ==='HomeScreen'){
+                    if(self.state.activeItem === 'Music'){
+                        self.setState({
+                            activeItem : "Coverflow"
+                        })
+                    }else if(self.state.activeItem === 'Games'){
+                        self.setState({
+                            activeItem : "Music"
+                        })
+                    }else if(self.state.activeItem === 'Settings'){
+                        self.setState({
+                            activeItem : "Games"
+                        })
+                    }else if(self.state.activeItem === 'Coverflow'){
+                        self.setState({
+                            activeItem : "Settings"
+                        })
+                    }
+                }else if(self.state.activePage === 'Music'){
+                    if(self.state.activeItem === 'MyMusic'){
+                        self.setState({
+                            activeItem : "Artists"
+                        })
+                    }
+                }else if(self.state.activeItem === 'Artists'){
+                        self.setState({
+                            activeItem : "MyMusic"
                     })
-                }else if(self.state.activeItem === 'Games'){
-                    self.setState({
-                        activeItem : "Music"
-                    })
-                }else if(self.state.activeItem === 'Settings'){
-                    self.setState({
-                        activeItem : "Games"
-                    })
-                }else if(self.state.activeItem === 'Coverflow'){
-                    self.setState({
-                        activeItem : "Settings"
-                    })
-                }
             }
         }
-        });
     }
+});
+    }
+
+        
 
     changePage = () => {
 
-        this.setState({
-            activeItem : this.state.activeItem,
-            activePage : this.state.activeItem
-        })
+        if(this.state.activeItem === 'Music'){
+            this.setState({
+                activeItem : 'MyMusic',
+                activePage : this.state.activeItem
+            })
+        }else{
+            this.setState({
+                activeItem : this.state.activeItem,
+                activePage : this.state.activeItem
+            })
+        }
     }
 
     changePageToHomeScreen = () => {
-        this.setState({
-            activeItem : this.state.activeItem,
-            activePage : 'HomeScreen'
-        });
+        if(this.state.activePage === 'Music'){
+            this.setState({
+                activeItem : 'Music',
+                activePage : 'HomeScreen'
+            })
+        }else{
+            this.setState({
+                activeItem : this.state.activeItem,
+                activePage : 'HomeScreen'
+            })
+        }
     }
+
     render(){
         return(
             
@@ -122,6 +165,7 @@ class Ipod extends React.Component{
     }
 
 }
+
 const styles={
     mainConatiner:{
         position:'relative',

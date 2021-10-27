@@ -3,7 +3,6 @@ import { ListGroup } from 'react-bootstrap';
 class HomeScreen extends React.Component{
     
     render(){
-        let self=this;
         return(
             <div style={styles.homeScreen} id='home-screen'>
             <div style={styles.menuList} id='menu-list'>
