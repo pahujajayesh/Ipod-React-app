@@ -25,9 +25,10 @@ class MainScreen extends React.Component{
 }
 const styles={
     mainScreen:{
-        height : '15rem',
-        width : '100%',
-        backgroundColor : 'white',
+        marginTop:'3%',
+        height : '12rem',
+        width : '85%',
+        backgroundColor:'rgb(245,245,245)',
         border : '2px solid lightgrey'  
     }
 }

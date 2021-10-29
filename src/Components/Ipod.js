@@ -172,25 +172,30 @@ class Ipod extends React.Component{
 
 const styles={
     mainConatiner:{
-        position:'relative',
+        position:'absolute',
+        top:'50%',
+        left:'50%',
+        transform:'translate(-50%,-50%)',
         height : 'auto',
-        width : '20rem',
-        backgroundColor : 'black',
+        width : '15rem',
+backgroundImage:'linear-gradient(315deg, #000000 0%, #414141 74%)',
         margin : 'auto',
         display:'flex',
         flexDirection : 'row',
         flexWrap : 'wrap',
-        justifyContent : 'center'
+        justifyContent : 'center',
+        borderRadius:'20px'
     },
     wheelContainer : {
-        height : '15rem',
-        width : '100%',
-        backgroundColor : 'lightgrey',
+        height : '13rem',
+        width : '85%',
+        backgroundImage:'linear-gradient(315deg, #000000 0%, #414141 74%)',
+
     },
     wheel:{
-        width : '80%',
-        height : '90%',
-        backgroundColor : 'white',
+        width : '85%',
+        height : '80%',
+        backgroundColor : 'rgb(245,245,245)',
         margin : '1rem auto',
         borderRadius : '50%',
         display : 'flex',
@@ -224,7 +229,7 @@ const styles={
         justifyContent : 'space-between'
     },
     selectBtn:{
-        backgroundColor : 'lightgrey' , 
+        backgroundImage:'linear-gradient(315deg, #000000 0%, #414141 74%)',
         width : '5rem' , 
         height : '5rem' , 
         borderRadius : '50%'

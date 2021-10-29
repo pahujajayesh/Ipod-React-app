@@ -6,7 +6,9 @@ class Settings extends React.Component{
 
     render(){
         return(
-            <div style={styles.settings} >
+           
+            <div style={styles.settings}>
+                  
             <img alt="settings-icon" style={styles.image} src="https://p.kindpng.com/picc/s/543-5439191_configuration-control-gear-preferences-repair-setting-gear-and.png" />
         </div>
         );
@@ -25,7 +27,8 @@ const styles = {
         width:'75%',
         height:'75%',
         alignSelf : 'center'
-    }
+    },
+
 }
 
 

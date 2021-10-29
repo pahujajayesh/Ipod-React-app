@@ -7,12 +7,12 @@ class Music extends React.Component{
         return(
             <div style={styles.musicScreen} id='music-screen'>
                 <div style={styles.menuList} id='menu-list'>
-                    <h2 style={{marginLeft:'12px'}}>IPod.js</h2>
+                    <h2 style={{marginLeft:'12px',fontSize:'1.2rem'}}>IPod.js</h2>
                     <ListGroup>
-                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='MyMusic'?'active':''}>
+                        <ListGroup.Item style={{border:'0',fontSize:'0.8rem'}} className={this.props.activeItem==='MyMusic'?'active':''}>
                             My Music {this.props.activeItem==='MyMusic'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
-                        <ListGroup.Item style={{border:'0'}} className={this.props.activeItem==='Artists'?'active':''}>
+                        <ListGroup.Item style={{border:'0',fontSize:'0.8rem'}} className={this.props.activeItem==='Artists'?'active':''}>
                             Artists {this.props.activeItem==='Artists'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
                     </ListGroup>
