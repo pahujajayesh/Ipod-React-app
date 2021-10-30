@@ -1,5 +1,5 @@
 import React from "react";
-
+//Games Component
 class Games extends React.Component{
     render(){
         return(
@@ -9,6 +9,7 @@ class Games extends React.Component{
         );
     }
 }
+//Adding styles to the component
     const styles = {
         settings : {
             width : '100%',

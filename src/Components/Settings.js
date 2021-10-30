@@ -1,8 +1,7 @@
 import React from 'react';
 
-
+// Setting Component
 class Settings extends React.Component{
-
 
     render(){
         return(
@@ -15,6 +14,7 @@ class Settings extends React.Component{
     }
 
 }
+//Adding styles to settings component
 const styles = {
     settings : {
         width : '100%',

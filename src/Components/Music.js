@@ -1,6 +1,7 @@
 import React from 'react';
+//importing listgroup from react bootstrap
 import { ListGroup } from 'react-bootstrap';
-
+//Music Component
 class Music extends React.Component{
 
     render(){
@@ -9,6 +10,9 @@ class Music extends React.Component{
                 <div style={styles.menuList} id='menu-list'>
                     <h2 style={{marginLeft:'12px',fontSize:'1.2rem'}}>IPod.js</h2>
                     <ListGroup>
+                        
+        {/* Adding My Music and Artists in the Music Menu */}
+
                         <ListGroup.Item style={{border:'0',fontSize:'0.8rem'}} className={this.props.activeItem==='MyMusic'?'active':''}>
                             My Music {this.props.activeItem==='MyMusic'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
@@ -17,15 +21,17 @@ class Music extends React.Component{
                         </ListGroup.Item>
                     </ListGroup>
                 </div>
+                {/* Background image */}
                 <div style={styles.imageContainer} id='image-container'>
-                    <img alt="background-img" style={{height:'100%' , width:'100%'}} src="https://images.pexels.com/photos/1005417/pexels-photo-1005417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+                <img alt="background-img" style={{ height:'100%',width:'100%',objectFit:'cover'}}src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg"/>
+
                 </div>
             </div>
         );
     }
 
 }
-
+//Adding styles to Music Component
 const styles = {
     musicScreen : {
         height : '100%',
@@ -46,4 +52,4 @@ const styles = {
 }
 
 
-export default Music; 
+export default Music;

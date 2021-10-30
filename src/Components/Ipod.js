@@ -1,6 +1,7 @@
 import React from "react";
 import MainScreen from './MainScreen';
 import ZingTouch from 'zingtouch';
+import sound from '../Assets/295.mp3'
 
 class Ipod extends React.Component{
     constructor(){
@@ -8,10 +9,11 @@ class Ipod extends React.Component{
         this.state = {
             activeItem : 'Music',
             activePage:'HomeScreen',
-            enter : 0
+            enter : 0,
+            play:true
         }
     }
-    
+    //Rotate wheel using Zingtouch
     rotateWheel = () => {
         var containerElement = document.getElementById('wheel-container');
         var activeRegion = new ZingTouch.Region(containerElement);
@@ -24,12 +26,10 @@ class Ipod extends React.Component{
             activeRegion.bind(childElement, 'rotate', function(event){
                 //perform Operations
                 var newAngle = event.detail.distanceFromLast;
-                console.log(newAngle);
+            
         if(newAngle < 0){
-            console.log(change);
             change++;
          if(change === 15){
-                console.log("change state");
                 change = 0;
                 if(self.state.activePage === 'HomeScreen'){
                     if(self.state.activeItem === 'Music'){
@@ -63,10 +63,8 @@ class Ipod extends React.Component{
             }
         }
             else{
-            console.log(change);
             change++;
             if(change === 15){
-                console.log("change state");
                 change = 0;
                 if(self.state.activePage ==='HomeScreen'){
                     if(self.state.activeItem === 'Music'){
@@ -100,13 +98,10 @@ class Ipod extends React.Component{
         }
     }
 });
-    }else{
-        console.log('Not allowed to enter')
     }
 }
 
-        
-
+       
     changePage = () => {
 
         if(this.state.activeItem === 'Music'){
@@ -123,7 +118,7 @@ class Ipod extends React.Component{
     }
 
     changePageToHomeScreen = () => {
-        if(this.state.activePage === 'Music' || this.state.activeItem==='Artists' || this.state.activeItem==='MyMusic'){
+        if(this.state.activeItem === 'MyMusic' || this.state.activeItem === 'Artists'){
             this.setState({
                 activeItem : 'Music',
                 activePage : 'HomeScreen'
@@ -135,20 +130,49 @@ class Ipod extends React.Component{
             })
         }
     }
+    toggle = () =>{
+        if(this.state.activePage === 'MyMusic'){
+            if(this.state.play === true){
+                this.state.audio.pause();
+                this.setState({
+                    play : false
+                })
+            }else{
+                this.state.audio.play();
+                this.setState({
+                    play : true
+                })
+            }
+        }
+    }
 
+    componentDidMount(){
+        let audio = document.getElementsByClassName("audio-element")[0];
+       
+        this.setState({
+            audio : audio,
+        })
+        
+    }
     render(){
         return(
             
             <div style={styles.mainConatiner}> 
-               <MainScreen activeItem={this.state.activeItem}  activePage={this.state.activePage}/>
+            {/* Music will Play in background even if you are not in the Mymusic component   */}
+                <audio className="audio-element">
+                    <source src={sound}></source>
+                </audio>
+               <MainScreen activeItem={this.state.activeItem}  activePage={this.state.activePage} audio={this.state.audio} />
                <div style = {styles.wheelContainer} id='wheel-container'>
                 <div style = {styles.wheel} id="inner-container" onMouseOver={this.rotateWheel}>
                 <div style = {styles.btnConatiner}>
+                    {/* Menu Button */}
                     <div style = {styles.menuButton}>
                        <img alt="Menu-btn" onClick={this.changePageToHomeScreen} style={styles.icon} src="https://cdn-icons-png.flaticon.com/512/1828/1828859.png"/>
                     </div>
 
                 </div>
+                {/* Forward and backward Buttons  */}
                 <div style = {styles.btnConatiner}>
                     <div style = {styles.middleButtons}>
                         <img alt="backward-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/56/56760.png" />
@@ -156,8 +180,10 @@ class Ipod extends React.Component{
                         <img alt="fwd-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/724/724927.png" />
                     </div>
                 </div>
+        
                 <div style = {styles.btnConatiner}>
-                    <div style = {styles.playPause}>
+                    {/* click on the button to play or pause the music */}
+                    <div onClick={this.toggle} style = {styles.playPause}>
                         <img alt="play-pause-icon" style = {styles.icon} src="https://cdn-icons-png.flaticon.com/512/64/64595.png" />
                     </div>
                 </div>
@@ -169,7 +195,7 @@ class Ipod extends React.Component{
     }
 
 }
-
+// Adding Styles to wheel component
 const styles={
     mainConatiner:{
         position:'absolute',

@@ -1,5 +1,7 @@
 import React from "react";
+//import listgroup from react-boorstrap
 import { ListGroup } from 'react-bootstrap';
+//Hoem Screen Component
 class HomeScreen extends React.Component{
     
     render(){
@@ -8,6 +10,7 @@ class HomeScreen extends React.Component{
             <div style={styles.menuList} id='menu-list'>
                 <h2 style={{marginLeft:'12px',fontSize:'1.2rem'}}>IPod.js</h2>
                 <ListGroup>
+                    {/* Menu List  */}
                         <ListGroup.Item style={{border:'0' ,fontSize:'0.8rem'}} className={this.props.activeItem==='Music'?'active':''}>
                             Music {this.props.activeItem==='Music'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
@@ -22,6 +25,7 @@ class HomeScreen extends React.Component{
                         </ListGroup.Item>
                     </ListGroup>
             </div>
+            {/* Background Image  */}
             <div style={styles.imageContainer} id='image-container'>
                 <img alt="background-img" style={{ height:'100%',width:'100%',objectFit:'cover'}}src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__480.jpg"/>
             </div>
@@ -29,6 +33,7 @@ class HomeScreen extends React.Component{
         )
     }
 }
+//adding styles to Home Screen
 const styles = {
     homeScreen : {
         height : '100%',

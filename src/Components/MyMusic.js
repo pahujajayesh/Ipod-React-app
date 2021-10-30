@@ -6,7 +6,6 @@ class MyMusic extends React.Component{
     constructor(){
         super();
         this.state = {
-            audio : null,
             isMounted:true
         }
     }
@@ -14,15 +13,12 @@ class MyMusic extends React.Component{
 
     componentDidMount(){
         let self=this;
-        const audioEl = document.getElementsByClassName("audio-element")[0];
-        self.audio = audioEl;
-        self.audio.play();
-        self.audio.addEventListener("timeupdate",function(){
+        self.props.audio.play();
+        self.props.audio.addEventListener("timeupdate",function(){
             if(self.state.isMounted){
-                var pos = audioEl.currentTime/audioEl.duration;
+                var pos = self.props.audio.currentTime/self.props.audio.duration;
                 self.updateTime();
                 let fill = document.getElementById("fill");
-                console.log(fill);
                 if(fill !== null){
                     fill.style.width = pos*100 + "%";
                 }
@@ -32,12 +28,12 @@ class MyMusic extends React.Component{
     }
     updateTime = () =>{
         this.setState({
-            audio : this.audio
+            audio : this.props.audio
         })
     }
 
     render(){
-        let audio = this.state.audio;
+        let audio = this.props.audio;
 
         return(
             <div style={styles.myMusicContainer}>
@@ -45,17 +41,14 @@ class MyMusic extends React.Component{
                 <div style={styles.info}>
                     <img alt="song-img"style={styles.image} src="https://cover.djpunjab.org/50413/300x700/295-Sidhu-Moose-Wala.jpg"></img>
                 <div style={styles.subInfo}>
-                    <h4 style={{marginBottom:'0.5rem'}}>295</h4>
-                        <p style={{marginBottom:'0'}}>Moosetape</p>
-                        <p>Sidhu Moosewala</p>
+                    <h4 >295</h4>
+                        <p style={{marginTop:'0.2rem'}}>Moosetape</p>
                 </div>
 
             </div>
 
                 <div style={styles.statusBar}>
-                    <audio className="audio-element">
-                        <source src={sound}></source>
-                    </audio>
+                   
                     <p style={styles.currTime}>{audio !== null ? Math.floor(audio.currentTime) : '0 / 0'}</p>
                     <div style={styles.seekBar}>
                         <div style={styles.fill} id='fill'></div>
@@ -77,12 +70,13 @@ const styles = {
         flexDirection : 'column',
     },
     image : {
-        height : '75%',
-        width : '45%',
-        alignSelf : 'center'
+        height : '55%',
+        width : '40%',
+        marginRight:'1rem',
+        alignSelf:'center'
     },
     info : {
-        height : '70%',
+        height : '75%',
         width : '100%',
         display : 'flex',
         flexDirection : 'row',
@@ -109,7 +103,7 @@ const styles = {
     },
     fill : {
         height: '100%',
-        backgroundColor: 'royalblue',
+        backgroundColor: 'darkgray',
     },
     currTime : {
         margin : '0',
