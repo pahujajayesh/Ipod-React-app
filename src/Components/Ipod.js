@@ -13,6 +13,7 @@ class Ipod extends React.Component{
             play:true
         }
     }
+
     //Rotate wheel using Zingtouch
     rotateWheel = () => {
         var containerElement = document.getElementById('wheel-container');
@@ -29,6 +30,7 @@ class Ipod extends React.Component{
             
         if(newAngle < 0){
             change++;
+    //if distance from last is equal to 15 rotate and change the active menu
          if(change === 15){
                 change = 0;
                 if(self.state.activePage === 'HomeScreen'){
@@ -49,7 +51,9 @@ class Ipod extends React.Component{
                             activeItem : "Music"
                         })
                     }
-                }else if(self.state.activePage === 'Music'){
+                }
+        //When active component is music then rotate between MyMusic and Artists
+                else if(self.state.activePage === 'Music'){
                     if(self.state.activeItem === 'MyMusic'){
                         self.setState({
                             activeItem : "Artists"
@@ -84,26 +88,28 @@ class Ipod extends React.Component{
                             activeItem : "Settings"
                         })
                     }
-                }else if(self.state.activePage === 'Music'){
-                    if(self.state.activeItem === 'MyMusic'){
+                }
+        //When active component is music then rotate between MyMusic and Artists
+                else if(self.state.activePage === 'Music'){
+                     if(self.state.activeItem === 'Artists'){
                         self.setState({
-                            activeItem : "Artists"
-                        })
-                    }
-                }else if(self.state.activeItem === 'Artists'){
+                        activeItem : "MyMusic"
+                })
+                         }
+                    }else if(self.state.activeItem === 'MyMusic'){
                         self.setState({
-                            activeItem : "MyMusic"
-                    })
+                        activeItem : "Artists"
+                     })
+                }
             }
         }
-    }
-});
-    }
+    });
 }
 
-       
-    changePage = () => {
+}
 
+//Click on Home Screen Menu to get into the component 
+    changePage = () => {
         if(this.state.activeItem === 'Music'){
             this.setState({
                 activeItem : 'MyMusic',
@@ -116,7 +122,7 @@ class Ipod extends React.Component{
             })
         }
     }
-
+//Click on menu button to go to Home Screen 
     changePageToHomeScreen = () => {
         if(this.state.activeItem === 'MyMusic' || this.state.activeItem === 'Artists'){
             this.setState({
@@ -130,6 +136,7 @@ class Ipod extends React.Component{
             })
         }
     }
+//Function to play and pause the music
     toggle = () =>{
         if(this.state.activePage === 'MyMusic'){
             if(this.state.play === true){
@@ -148,7 +155,6 @@ class Ipod extends React.Component{
 
     componentDidMount(){
         let audio = document.getElementsByClassName("audio-element")[0];
-       
         this.setState({
             audio : audio,
         })

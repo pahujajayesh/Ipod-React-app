@@ -10,16 +10,15 @@ class Music extends React.Component{
                 <div style={styles.menuList} id='menu-list'>
                     <h2 style={{marginLeft:'12px',fontSize:'1.2rem'}}>IPod.js</h2>
                     <ListGroup>
-                        
         {/* Adding My Music and Artists in the Music Menu */}
-
                         <ListGroup.Item style={{border:'0',fontSize:'0.8rem'}} className={this.props.activeItem==='MyMusic'?'active':''}>
                             My Music {this.props.activeItem==='MyMusic'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
                         <ListGroup.Item style={{border:'0',fontSize:'0.8rem'}} className={this.props.activeItem==='Artists'?'active':''}>
-                            Artists {this.props.activeItem==='Artists'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
+                        Artists {this.props.activeItem==='Artists'?<span style={{float:'right' ,fontWeight:'bold'}}>&gt;</span>:''}
                         </ListGroup.Item>
                     </ListGroup>
+
                 </div>
                 {/* Background image */}
                 <div style={styles.imageContainer} id='image-container'>
@@ -40,12 +39,10 @@ const styles = {
         flexDirecton : 'row'
     },
     menuList : {
-        //border:'1px solid black',
         height : '100%',
         width : '50%'
     },
     imageContainer : {
-        //border:'1px solid black',
         height : '100%',
         width : '50%'
     }
