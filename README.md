@@ -1,4 +1,4 @@
-Live Link -ipodwebapp.netlify.app
+Websited host link:  https://ipodwebapp.netlify.app/
 
 # Getting Started with Create React App
 
